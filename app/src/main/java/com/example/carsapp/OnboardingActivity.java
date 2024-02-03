@@ -24,15 +24,12 @@ public class OnboardingActivity extends AppCompatActivity {
             setContentView(R.layout.activity_onboarding);
 
             Button btnContinueToMain = findViewById(R.id.btnContinueTologin);
-            btnContinueToMain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Mark onboarding as completed (optional)
-                    markOnboardingAsCompleted();
+            btnContinueToMain.setOnClickListener(v -> {
+                // Mark onboarding as completed (optional)
+                markOnboardingAsCompleted();
 
-                    // Move to the homepage
-                    startHomePage();
-                }
+                // Move to the homepage
+                startHomePage();
             });
         }
     }
