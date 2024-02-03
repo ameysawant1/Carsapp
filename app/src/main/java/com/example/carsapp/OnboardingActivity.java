@@ -30,7 +30,7 @@ public class OnboardingActivity extends AppCompatActivity {
                     // Mark onboarding as completed (optional)
                     markOnboardingAsCompleted();
 
-                    // Move to the main activity
+                    // Move to the homepage
                     startHomePage();
                 }
             });
