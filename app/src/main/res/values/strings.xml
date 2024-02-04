@@ -19,4 +19,9 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="bell_button_description">Bell Button - Notify me of updates</string>
     <string name="search_handel">Search For Cars</string>
+    <string name="popular_car">Popular</string>
+    <string name="Top_cars">Top Car In India</string>
+    <string name="popular_car_name">Hyundai Creta</string>
+    <string name="popular_car_price">Rs.13.10 Lakh</string>
+    <string name="popular_car_location">On-Road Price, Mumbai</string>
 </resources>
