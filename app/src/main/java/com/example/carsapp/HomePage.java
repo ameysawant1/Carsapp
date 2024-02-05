@@ -22,9 +22,7 @@ import java.util.Calendar;
 public class HomePage extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 123;
 
-    private ArrayList<popularcarsmodel> arrPopularCars = new ArrayList<>();
-    private RecyclerView popularCarsRecyclerView;
-    private RecyclerView popularCarsRecyclerView2;
+    private final ArrayList<popularcarsmodel> arrPopularCars = new ArrayList<>();
     private TextView greetingTextView;
     private GridView carIconsGridView;
 
@@ -33,8 +31,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        popularCarsRecyclerView = findViewById(R.id.popularcars);
-        popularCarsRecyclerView2 = findViewById(R.id.popularcars2);
+        RecyclerView popularCarsRecyclerView = findViewById(R.id.popularcars);
+        RecyclerView popularCarsRecyclerView2 = findViewById(R.id.popularcars2);
         greetingTextView = findViewById(R.id.greetings);
         carIconsGridView = findViewById(R.id.carIconsGridView); // Added GridView
 
@@ -108,7 +106,7 @@ public class HomePage extends AppCompatActivity {
         // Set item click listener for the GridView
         carIconsGridView.setOnItemClickListener((parent, view, position, id) -> {
             int selectedCarIcon = carIcons[position];
-            // TODO: Add your logic for handling the selected car icon
+
             Toast.makeText(this, "Selected Car Icon: " + selectedCarIcon, Toast.LENGTH_SHORT).show();
         });
     }
