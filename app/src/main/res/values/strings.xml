@@ -24,4 +24,5 @@
     <string name="popular_car_name">Hyundai Creta</string>
     <string name="popular_car_price">Rs.13.10 Lakh</string>
     <string name="popular_car_location">On-Road Price, Mumbai</string>
+    <string name="profile_pic">profile_image</string>
 </resources>

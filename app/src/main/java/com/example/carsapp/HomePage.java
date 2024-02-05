@@ -4,7 +4,9 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class HomePage extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 123;
@@ -22,6 +25,8 @@ public class HomePage extends AppCompatActivity {
     private ArrayList<popularcarsmodel> arrPopularCars = new ArrayList<>();
     private RecyclerView popularCarsRecyclerView;
     private RecyclerView popularCarsRecyclerView2;
+    private TextView greetingTextView;
+    private GridView carIconsGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,8 @@ public class HomePage extends AppCompatActivity {
 
         popularCarsRecyclerView = findViewById(R.id.popularcars);
         popularCarsRecyclerView2 = findViewById(R.id.popularcars2);
+        greetingTextView = findViewById(R.id.greetings);
+        carIconsGridView = findViewById(R.id.carIconsGridView); // Added GridView
 
         // Set up the layout manager for the first RecyclerView
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -62,6 +69,47 @@ public class HomePage extends AppCompatActivity {
                 // Check and request location permission
                 checkLocationPermission();
             }
+        });
+
+        // Set the greeting text with emoji
+        setGreetingText();
+
+        // Set up car icons for the user to choose from
+        setupCarIcons();
+    }
+    private void setGreetingText() {
+        // Get the current time
+        Calendar calendar = Calendar.getInstance();
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+
+        // Determine the greeting based on the time
+        String greeting;
+        if (hourOfDay >= 0 && hourOfDay < 12) {
+            greeting = "Good Morning";
+        } else if (hourOfDay >= 12 && hourOfDay < 18) {
+            greeting = "Good Afternoon";
+        } else {
+            greeting = "Good Evening";
+        }
+
+        // Set the greeting text with emoji
+        String emoji = getEmojiByUnicode(0x1F604); // Unicode for smiling face
+        greetingTextView.setText(greeting + " " + emoji);
+    }
+    private void setupCarIcons() {
+        // Create sample data for car icons
+        Integer[] carIcons = {R.drawable.car, R.drawable.car2, R.drawable.car3};
+
+// Create and set the adapter for car icons
+        CarIconsAdapter carIconsAdapter = new CarIconsAdapter(this, carIcons);
+        GridView gridView = findViewById(R.id.carIconsGridView);
+        gridView.setAdapter(carIconsAdapter);
+
+        // Set item click listener for the GridView
+        carIconsGridView.setOnItemClickListener((parent, view, position, id) -> {
+            int selectedCarIcon = carIcons[position];
+            // TODO: Add your logic for handling the selected car icon
+            Toast.makeText(this, "Selected Car Icon: " + selectedCarIcon, Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -99,4 +147,10 @@ public class HomePage extends AppCompatActivity {
             }
         }
     }
+
+    private String getEmojiByUnicode(int unicode) {
+        return new String(Character.toChars(unicode));
+    }
 }
+
+

@@ -5,4 +5,6 @@
     <color name="WelcomeGrey">#28272E</color>
     <color name="GG">#808080</color>
     <color name="backgroundcolor">#1D1D1D</color>
+    <color name="visible_white">#F5F5F5</color>
+    <color name="text_white">#BDBDBD</color>
 </resources>
