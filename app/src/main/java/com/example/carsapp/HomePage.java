@@ -1,8 +1,12 @@
 package com.example.carsapp;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -25,6 +29,33 @@ public class HomePage extends AppCompatActivity {
     private final ArrayList<popularcarsmodel> arrPopularCars = new ArrayList<>();
     private TextView greetingTextView;
     private GridView carIconsGridView;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.loan) {
+            // Open LoanActivity when loan menu item is clicked
+            startActivity(new Intent(this, LoanActivity.class));
+            return true;
+        } else if (id == R.id.home) {
+            // Handle Home item click
+            return true;
+        } else if (id == R.id.compare) {
+            // Handle Compare item click
+            return true;
+        } else if (id == R.id.menu) {
+            // Handle Menu item click
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +106,7 @@ public class HomePage extends AppCompatActivity {
         // Set up car icons for the user to choose from
         setupCarIcons();
     }
+
     private void setGreetingText() {
         // Get the current time
         Calendar calendar = Calendar.getInstance();
@@ -86,19 +118,22 @@ public class HomePage extends AppCompatActivity {
             greeting = "Good Morning";
         } else if (hourOfDay >= 12 && hourOfDay < 18) {
             greeting = "Good Afternoon";
-        } else {
+        } else if (hourOfDay >= 18 && hourOfDay < 24) {
             greeting = "Good Evening";
+        } else {
+            greeting = "Good Night";
         }
 
         // Set the greeting text with emoji
         String emoji = getEmojiByUnicode(0x1F604); // Unicode for smiling face
         greetingTextView.setText(greeting + " " + emoji);
     }
+
     private void setupCarIcons() {
         // Create sample data for car icons
         Integer[] carIcons = {R.drawable.car, R.drawable.car2, R.drawable.car3};
 
-// Create and set the adapter for car icons
+        // Create and set the adapter for car icons
         CarIconsAdapter carIconsAdapter = new CarIconsAdapter(this, carIcons);
         GridView gridView = findViewById(R.id.carIconsGridView);
         gridView.setAdapter(carIconsAdapter);
@@ -150,5 +185,3 @@ public class HomePage extends AppCompatActivity {
         return new String(Character.toChars(unicode));
     }
 }
-
-

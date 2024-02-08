@@ -25,4 +25,8 @@
     <string name="popular_car_price">Rs.13.10 Lakh</string>
     <string name="popular_car_location">On-Road Price, Mumbai</string>
     <string name="profile_pic">profile_image</string>
+    <string name="home">Home</string>
+    <string name="loan">Loan</string>
+    <string name="compare">Compare</string>
+    <string name="menu">Menu</string>
 </resources>

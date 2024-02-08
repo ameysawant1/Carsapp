@@ -44,7 +44,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
 
-    implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("com.ramotion.paperonboarding:paper-onboarding:1.1.3")
     implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("com.google.android.gms:play-services-location:21.1.0")

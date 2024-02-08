@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:showAsAction="always">
         <item
             android:id="@+id/home"
-            android:title="Home"
+            android:title="@string/home"
             android:icon="@drawable/home_icon" />
 
         <item
             android:id="@+id/loan"
-            android:title="Loan"
+            android:title="@string/loan"
             android:icon="@drawable/loan_icon" />
 
         <item
             android:id="@+id/compare"
-            android:title="Compare"
+            android:title="@string/compare"
             android:icon="@drawable/compare_icon" />
 
         <item
             android:id="@+id/menu"
-            android:title="Menu"
+            android:title="@string/menu"
             android:icon="@drawable/menu_icon" />
 
 </menu>
